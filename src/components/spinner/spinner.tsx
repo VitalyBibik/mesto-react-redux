@@ -5,9 +5,7 @@ import cn from "classnames";
 
 const Spinner = () => {
   return (
-    <div className={cn(styles['header'])}>
-
-    </div>
+    <div className={cn(styles['spinner'])}/>
   );
 }
 
