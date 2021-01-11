@@ -1,9 +1,11 @@
 import React from 'react';
-import './App.scss';
+import styles from './App.module.scss';
+import cn from "classnames";
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
+    <div className={cn(styles['App'])}>
 
     </div>
   );
