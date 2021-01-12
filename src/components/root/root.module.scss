@@ -1,26 +1,23 @@
 .root {
   background-color: black;
   min-height: 100vh;
-  font-family: 'Inter', serif;
+  font-family: "Inter", serif;
   padding-bottom: 194px;
-}
 
-.&__section {
-  width: calc(100% - 400px);
-  margin: auto;
-}
-
-@media screen and (max-width: 1024px) {
-  .root {
-    padding-bottom: 140px;
+  &__section {
+    width: calc(100% - 400px);
+    margin: auto;
   }
 
-@media screen and (max-width: 980px) {
-  .&__section {
-    width: 90%;
+  @media screen and (max-width: 1024px) {
+    & {
+      padding-bottom: 140px;
+    }
   }
-}
 
-
-
+  @media screen and (max-width: 980px) {
+    &__section {
+      width: 90%;
+    }
+  }
 }
