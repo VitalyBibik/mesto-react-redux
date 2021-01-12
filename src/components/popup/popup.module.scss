@@ -4,26 +4,26 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   align-items: center;
   justify-content: center;
   display: none;
 
-  .&.&_is-opened {
+  &.&_is-opened {
     display: flex;
   }
 
-  .&__title {
+  &__title {
     margin: 0;
     font-size: 24px;
     line-height: 30px;
   }
 
-  .&__input {
+  &__input {
     width: 100%;
     height: 47px;
     border: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     font-size: 14px;
     line-height: 17px;
     box-sizing: border-box;
@@ -31,15 +31,15 @@
     margin-bottom: 24px;
   }
 
-  .&__input:last-of-type {
+  &__input:last-of-type {
     margin-bottom: 0;
   }
 
-  .&__form {
+  &__form {
     margin-top: 60px;
   }
 
-  .&__close {
+  &__close {
     width: 26px;
     position: absolute;
     top: -26px;
@@ -47,46 +47,45 @@
     cursor: pointer;
   }
 
-  .&__container {
+  &__container {
     width: 600px;
     height: 600px;
     margin: auto;
     background-size: cover;
-    background-position:top center;
+    background-position: top center;
     position: relative;
     background-repeat: no-repeat;
   }
-  .&__button {
+  &__button {
     width: 100%;
     height: 50px;
-    border: 1px solid rgba(0, 0, 0, .2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     margin-top: 48px;
     font-size: 36px;
     background-color: #000000;
     color: #ffffff;
 
-    .&_is-disabled {
-      color: rgba(0, 0, 0, .2);
+    &_is-disabled {
+      color: rgba(0, 0, 0, 0.2);
       font-size: 36px;
-      background-color:#ffffff;
+      background-color: #ffffff;
     }
 
-    .&_is-enabled {
+    &_is-enabled {
       background: #000000;
     }
-
   }
-  .&__btn-save {
+  &__btn-save {
     width: 100%;
     height: 50px;
-    border: 1px solid rgba(0, 0, 0, .2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     margin-top: 48px;
     background-color: #000000;
     color: #ffffff;
     font-size: 18px;
   }
 
-  .&__content {
+  &__content {
     width: 430px;
     min-height: 330px;
     background-color: #fff;
@@ -97,9 +96,8 @@
   }
 
   @media screen and (max-width: 540px) {
-    .&__content {
+    &__content {
       width: calc(100% - 60px);
     }
   }
-
 }
