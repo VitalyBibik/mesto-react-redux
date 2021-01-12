@@ -1,12 +1,11 @@
-
 .place-card {
   width: 282px;
   background-color: #fff;
   border-radius: 10px;
   min-height: 360px;
 
-  .&__delete-icon  {
-    background: transparent url('../../images/trash-icon.svg') no-repeat center;
+  &__delete-icon {
+    background: transparent url("../../images/trash-icon.svg") no-repeat center;
     border: none;
     width: 18px;
     height: 20px;
@@ -19,11 +18,11 @@
       display: block;
     }
   }
-  .&:hover .&__delete-icon {
+  &:hover &__delete-icon {
     display: block;
   }
 
-  .&__description {
+  &__description {
     display: flex;
     min-height: 78px;
     align-items: center;
@@ -32,7 +31,7 @@
     padding: 0 22px;
   }
 
-  .&__image {
+  &__image {
     height: 282px;
     background-size: cover;
     background-position: center;
@@ -42,40 +41,41 @@
     cursor: pointer;
   }
 
-  .&__image::after {
-    content: '';
+  &__image::after {
+    content: "";
     display: block;
     width: 282px;
     height: 282px;
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, 0.3);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
 
-  .&__like-icon {
-    background: transparent url('../../images/like-inactive.svg') no-repeat center;
+  &__like-icon {
+    background: transparent url("../../images/like-inactive.svg") no-repeat
+      center;
     border: none;
     width: 21px;
     height: 19px;
     cursor: pointer;
-    transition: transform .3s linear;
+    transition: transform 0.3s linear;
   }
 
-  .&__like-icon_liked {
-    background-image: url('../../images/like-active.svg');
+  &__like-icon_liked {
+    background-image: url("../../images/like-active.svg");
   }
 
-  .&__like-icon:hover {
+  &__like-icon:hover {
     transform: scale(1.03);
   }
 
-  .&__name {
+  &__name {
     margin: 0;
     font-size: 24px;
     line-height: 29px;
   }
 
-  .&__number-like {
+  &__number-like {
     font-weight: normal;
     font-size: 13px;
     line-height: 16px;
@@ -83,6 +83,4 @@
     margin: 0;
     color: #000000;
   }
-
-
 }
