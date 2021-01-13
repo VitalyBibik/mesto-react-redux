@@ -15,9 +15,10 @@ export const getCards = () => ({
   type: GET_CARDS,
   CallApi: `${config.baseUrl} + /cards`,
 });
-export const uploadCards = () => ({
+export const uploadCards = (placeName, placeLink) => ({
   type: UPLOAD_CARDS,
   CallApi: `${config.baseUrl} + /cards`,
+  payload: { placeName, placeLink },
 });
 export const removeCards = (placeLink) => ({
   type: REMOVE_CARDS,
@@ -40,6 +41,7 @@ export const getUser = () => ({
 export const setUser = (userName, userJob) => ({
   type: SET_USER,
   CallApi: `${config.baseUrl} + /users/me`,
+  payload: { userName, userJob },
 });
 
 export const getAvatar = () => ({
@@ -49,4 +51,5 @@ export const getAvatar = () => ({
 export const setAvatar = (placeLink) => ({
   type: SET_AVATAR,
   CallApi: `${config.baseUrl} + /cards`,
+  payload: { placeLink },
 });
