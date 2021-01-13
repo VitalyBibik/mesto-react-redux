@@ -39,5 +39,14 @@ export const getUser = () => ({
 });
 export const setUser = (userName, userJob) => ({
   type: SET_USER,
+  CallApi: `${config.baseUrl} + /users/me`,
+});
+
+export const getAvatar = () => ({
+  type: GET_AVATAR,
+  CallApi: `${config.baseUrl} + /users/me`,
+});
+export const setAvatar = (placeLink) => ({
+  type: SET_AVATAR,
   CallApi: `${config.baseUrl} + /cards`,
 });
