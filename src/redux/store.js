@@ -3,10 +3,10 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import logger from "./middleware/logger";
 import api from "./middleware/api";
+import { rootReducer } from "./reducer";
 
-import reducer from "./reducer";
 
-const enhancer = applyMiddleware(thunk, api, logger);
+/* const enhancer = applyMiddleware(thunk, api, logger); */
 
 /*
 const configureStore = (preloadedState: any) => (
@@ -19,5 +19,8 @@ const configureStore = (preloadedState: any) => (
   )
 )
  */
-
+/*
 export default createStore(reducer, composeWithDevTools(enhancer));
+*/
+
+export const store = createStore(rootReducer)
