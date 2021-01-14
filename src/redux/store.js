@@ -8,4 +8,16 @@ import reducer from "./reducer";
 
 const enhancer = applyMiddleware(thunk, api, logger);
 
+/*
+const configureStore = (preloadedState: any) => (
+  createStore(
+    reducer,
+    preloadedState,
+    composeWithDevTools(
+      applyMiddleware(thunk, api, logger)
+    )
+  )
+)
+ */
+
 export default createStore(reducer, composeWithDevTools(enhancer));
