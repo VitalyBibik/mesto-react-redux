@@ -22,4 +22,4 @@ const configureStore = (preloadedState: any) => (
 export default createStore(reducer, composeWithDevTools(enhancer));
 */
 
-export const store = createStore(rootReducer, applyMiddleware(logger));
+export const store = createStore(rootReducer, applyMiddleware(thunk, logger));
