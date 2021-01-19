@@ -7,7 +7,6 @@ import { fetchUsers } from "../../redux/actions/userActions";
 import { cardsSelectors, usersSelectors } from "../../redux/selectors";
 
 const PlacesList = ({ cards, fetchUsers, userData }: any) => {
-  console.log(userData, "userData");
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
