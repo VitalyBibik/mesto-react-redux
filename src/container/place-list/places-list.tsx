@@ -7,6 +7,7 @@ import { fetchUsers } from "../../redux/actions/userActions";
 import { cardsSelectors, usersSelectors } from "../../redux/selectors";
 
 const PlacesList = ({ cards, fetchUsers, userData }: any) => {
+  console.log(userData, "userData");
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
@@ -30,8 +31,8 @@ const PlacesList = ({ cards, fetchUsers, userData }: any) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    cards: cardsSelectors,
-    userData: usersSelectors,
+    cards: cardsSelectors(state),
+    userData: usersSelectors(state),
   };
 };
 const mapDispatchToProps = {
