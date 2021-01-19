@@ -33,10 +33,8 @@ const mapStateToProps = (state: any) => {
     userData: state.users,
   };
 };
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    fetchUsers: () => dispatch(fetchUsers()),
-  };
+const mapDispatchToProps = {
+  fetchUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlacesList);
