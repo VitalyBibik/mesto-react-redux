@@ -5,14 +5,13 @@ import cn from "classnames";
 import PlaceCard from "../../components/place-card/place-card";
 import { fetchUsers } from "../../redux/actions/userActions";
 
-const PlacesList = ({ card, fetchUsers, userData }: any) => {
+const PlacesList = ({ cards, fetchUsers, userData }: any) => {
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
-
-  console.log("state", userData);
   return (
     <div className={cn(styles["places-list"], styles["root__section"])}>
+      <PlaceCard cards={cards.cards} />
       {userData.loading ? (
         <h2>loading</h2>
       ) : userData.error ? (
@@ -30,7 +29,7 @@ const PlacesList = ({ card, fetchUsers, userData }: any) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    card: state.card,
+    cards: state.cards,
     userData: state.users,
   };
 };

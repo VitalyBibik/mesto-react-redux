@@ -1,4 +1,11 @@
+import {
+  FETCH_CARDS_FAILURE,
+  FETCH_CARDS_REQUEST,
+  FETCH_CARDS_SUCCESS,
+} from "../сonstants";
+
 export const initialState = {
+  loading: false,
   cards: [
     {
       createdAt: "2020-03-11T16:21:14.915Z",
@@ -16,10 +23,29 @@ export const initialState = {
       _id: "5e690ffa69fae7001f72a55f",
     },
   ],
-  isFetching: false,
 };
-const cardReducer = (state = initialState) => {
-  return state.cards;
+const cards = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_CARDS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_CARDS_SUCCESS:
+      return {
+        loading: false,
+        users: action.payload,
+        error: "",
+      };
+    case FETCH_CARDS_FAILURE:
+      return {
+        loading: false,
+        users: [],
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
 };
 
-export default cardReducer;
+export default cards;

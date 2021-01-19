@@ -3,8 +3,9 @@ import styles from "./place-card.module.scss";
 import cn from "classnames";
 
 const PlaceCard = ({ cards }: any) => {
+  console.log(cards, "2");
   const renderCards = () => {
-    return cards.card.map((el: any) => {
+    return cards.map((el: any) => {
       return (
         <>
           <div
