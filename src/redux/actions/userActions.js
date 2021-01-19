@@ -2,7 +2,7 @@ import {
   FETCH_USERS_FAILURE,
   FETCH_USERS_REQUEST,
   FETCH_USERS_SUCCESS,
-} from "../сonstants";
+} from "../constants";
 import axios from "axios";
 
 export const fetchUsersRequest = () => {

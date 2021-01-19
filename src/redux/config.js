@@ -11,4 +11,5 @@ const obj = {
   },
 };
 
-export const Config = obj;
+const Config = obj;
+export default Config;

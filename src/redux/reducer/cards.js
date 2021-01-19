@@ -2,7 +2,7 @@ import {
   FETCH_CARDS_FAILURE,
   FETCH_CARDS_REQUEST,
   FETCH_CARDS_SUCCESS,
-} from "../сonstants";
+} from "../constants";
 
 export const initialState = {
   loading: false,

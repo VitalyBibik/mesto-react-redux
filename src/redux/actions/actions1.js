@@ -8,8 +8,8 @@ import {
   SET_USER,
   GET_AVATAR,
   SET_AVATAR,
-} from "../сonstants";
-import { config } from "../config";
+} from "../constants";
+import config from "../config";
 
 export const getCards = () => ({
   type: GET_CARDS,

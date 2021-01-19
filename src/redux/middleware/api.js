@@ -1,4 +1,4 @@
-import { FAILURE, REQUEST, SUCCESS } from "../сonstants";
+import { FAILURE, REQUEST, SUCCESS } from "../constants";
 
 const createPostParams = (data) => ({
   method: "POST",

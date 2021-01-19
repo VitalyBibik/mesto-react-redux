@@ -6,7 +6,7 @@ import {
   FAILURE,
   GET_CARDS,
   REMOVE_CARDS,
-} from "../сonstants";
+} from "../constants";
 
 const initialState = {
   loading: {},
