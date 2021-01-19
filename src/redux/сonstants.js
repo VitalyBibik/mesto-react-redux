@@ -14,3 +14,8 @@ export const SET_AVATAR = 'SET_AVATAR';
 export const REQUEST = '_REQUEST';
 export const SUCCESS = '_SUCCESS';
 export const FAILURE = '_FAILURE';
+
+
+export  const FETCH_USERS_REQUEST = 'FETCH_USERS_REQUEST'
+export  const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS'
+export  const FETCH_USERS_FAILURE = 'FETCH_USERS_FAILURE'

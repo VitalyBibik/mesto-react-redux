@@ -18,6 +18,8 @@ export const initialState = {
   ],
   isFetching: false,
 };
-export function cardReducer(state = initialState) {
+const cardReducer = (state = initialState) => {
   return state.cards;
-}
+};
+
+export default cardReducer;

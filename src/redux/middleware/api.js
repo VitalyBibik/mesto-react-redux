@@ -6,7 +6,7 @@ const createPostParams = (data) => ({
   body: JSON.stringify(data),
 });
 
-export default (store) => (next) => async (action) => {
+const api = (store) => (next) => async (action) => {
   if (!action.CallAPI) return next(action);
 
   const { CallAPI, type, postData, ...rest } = action;
@@ -26,3 +26,4 @@ export default (store) => (next) => async (action) => {
     throw next({ ...rest, type: type + FAILURE, error });
   }
 };
+export default api;
