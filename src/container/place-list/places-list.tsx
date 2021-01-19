@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import cn from "classnames";
 import PlaceCard from "../../components/place-card/place-card";
 import { fetchUsers } from "../../redux/actions/userActions";
+import { cardsSelectors, usersSelectors } from "../../redux/selectors";
 
 const PlacesList = ({ cards, fetchUsers, userData }: any) => {
   useEffect(() => {
@@ -29,8 +30,8 @@ const PlacesList = ({ cards, fetchUsers, userData }: any) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    cards: state.cards,
-    userData: state.users,
+    cards: cardsSelectors,
+    userData: usersSelectors,
   };
 };
 const mapDispatchToProps = {
