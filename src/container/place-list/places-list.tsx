@@ -1,15 +1,23 @@
 import React, { useEffect } from "react";
 import styles from "./places-list.module.scss";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 import PlaceCard from "../../components/place-card/place-card";
-import { fetchUsers } from "../../redux/actions/userActions";
 import { cardsSelectors, usersSelectors } from "../../redux/selectors";
+import { fetchUsers } from "../../redux/actions/userActions";
 
-const PlacesList = ({ cards, fetchUsers, userData }: any) => {
+const PlacesList = () => {
+  const cards = useSelector(cardsSelectors);
+  const userData = useSelector(usersSelectors);
+  const dispatch = useDispatch();
+
+  const getUsers = () => {
+    dispatch(fetchUsers);
+  };
+
   useEffect(() => {
-    fetchUsers();
-  }, [fetchUsers]);
+    getUsers();
+  }, [getUsers]);
   return (
     <div className={cn(styles["places-list"], styles["root__section"])}>
       <PlaceCard cards={cards.cards} />
@@ -28,14 +36,4 @@ const PlacesList = ({ cards, fetchUsers, userData }: any) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    cards: cardsSelectors(state),
-    userData: usersSelectors(state),
-  };
-};
-const mapDispatchToProps = {
-  fetchUsers,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PlacesList);
+export default PlacesList;

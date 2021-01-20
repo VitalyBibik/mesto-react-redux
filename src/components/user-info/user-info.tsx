@@ -3,6 +3,9 @@ import styles from "./user-info.module.scss";
 import cn from "classnames";
 
 const userInfo = () => {
+  // user-info__photo -1
+  // EDIT - 2
+  // + -3
   return (
     <div className={cn(styles["user-info"])}>
       <div className={cn(styles["user-info__photo"])} />
