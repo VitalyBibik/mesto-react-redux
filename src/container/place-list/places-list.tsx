@@ -14,7 +14,6 @@ const PlacesList = () => {
   const getUsers = () => {
     dispatch(fetchUsers);
   };
-
   useEffect(() => {
     getUsers();
   }, [getUsers]);
@@ -35,5 +34,4 @@ const PlacesList = () => {
     </div>
   );
 };
-
 export default PlacesList;
