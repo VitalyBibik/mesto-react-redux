@@ -4,6 +4,7 @@ import cn from "classnames";
 import Header from "../header/header";
 import Profile from "../profile/profile";
 import PlacesList from "../../container/place-list/places-list";
+import Popup from "../popup/popup";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Header />
       <Profile />
       <PlacesList />
+      <Popup />
     </div>
   );
 };
