@@ -4,58 +4,67 @@ import cn from "classnames";
 import ImagePopup from "../imagePopup/imagePopup";
 import PopupWithForm from "../popupWithForm/popupWithForm";
 
-const Popup = () => {};
-return;
-let isAddPlacePopupOpen;
-let closeAllPopups;
-const obj = {
-  newPlaceTitle: `Новое Место`,
-  avatarTitle: "Обновить аватар",
-  profileTitle: "Редактировать профиль",
-};
-<PopupWithForm
-  name="new"
-  id="new"
-  isOpen={isAddPlacePopupOpen}
-  onClose={closeAllPopups}
-  title={obj.newPlaceTitle}
->
-  <>
-    <div className={"input-container"}>
-      <input
-        required
-        type="text"
-        name="name"
-        id="newPlace"
-        className={"popup__input popup__input_type_name"}
-        minLength="2"
-        maxLength="32"
-        placeholder="Название"
-      />
-      <span id="error-newPlace" className="error-message" />
-    </div>
-    <div className={"input-container"}>
-      <input
-        required
-        type="url"
-        name="newlink"
-        id="newlink"
-        className={"popup__input popup__input_type_link-url"}
-        placeholder="Ссылка на картинку"
-      />
-      <span id="error-newlink" className={"error-message"} />
-    </div>
-    <button
-      id="submitPlace"
-      type="submit"
-      className={"button popup__button popup__button_is-disabled"}
+const Popup = () => {
+  const obj = {
+    newPlaceTitle: "Новое Место",
+    avatarTitle: "Обновить аватар",
+    profileTitle: "Редактировать профиль",
+  };
+  return (
+    <PopupWithForm
+      name="new"
+      id="new"
+      isOpen={isAddPlacePopupOpen}
+      onClose={closeAllPopups}
+      title={obj.newPlaceTitle}
     >
-      +
-    </button>
-    <div className={"spinner"} id="spinnerPlace">
-      <i />
-    </div>
-  </>
-</PopupWithForm>;
-
+      <>
+        <div className={cn(styles["input-container"])}>
+          <input
+            required
+            type="text"
+            name="name"
+            id="newPlace"
+            className={cn(
+              styles["popup__input"],
+              styles["popup__input_type_name"]
+            )}
+            minLength="2"
+            maxLength="32"
+            placeholder="Название"
+          />
+          <span id="error-newPlace" className={cn(styles["error-message"])} />
+        </div>
+        <div className={cn(styles["input-container"])}>
+          <input
+            required
+            type="url"
+            name="newlink"
+            id="newlink"
+            className={cn(
+              styles["popup__input"],
+              styles["popup__input_type_link-url"]
+            )}
+            placeholder="Ссылка на картинку"
+          />
+          <span id="error-newlink" className={cn(styles["error-message"])} />
+        </div>
+        <button
+          id="submitPlace"
+          type="submit"
+          className={cn(
+            styles["button"],
+            styles["popup__button"],
+            styles["popup__button_is-disabled"]
+          )}
+        >
+          +
+        </button>
+        <div className={cn(styles["spinner"])} id="spinnerPlace">
+          <i />
+        </div>
+      </>
+    </PopupWithForm>
+  );
+};
 export default Popup;
