@@ -10,6 +10,7 @@ const Popup = () => {
     avatarTitle: "Обновить аватар",
     profileTitle: "Редактировать профиль",
   };
+
   return (
     <PopupWithForm
       name="new"
