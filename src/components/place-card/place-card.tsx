@@ -3,7 +3,7 @@ import styles from "./place-card.module.scss";
 import cn from "classnames";
 
 const PlaceCard = ({ card }: any) => {
-  const currentCard = useMemo(() => {
+  return useMemo(() => {
     return (
       <div className={cn(styles["place-card"])}>
         <div
@@ -27,6 +27,5 @@ const PlaceCard = ({ card }: any) => {
       </div>
     );
   }, [card.likes]);
-  return currentCard;
 };
 export default PlaceCard;
