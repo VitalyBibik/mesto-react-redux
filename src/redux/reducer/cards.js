@@ -1,10 +1,10 @@
 import {
-  FETCH_CARDS_FAILURE,
-  FETCH_CARDS_REQUEST,
-  FETCH_CARDS_SUCCESS,
+  GET_CARDS_FAILURE,
+  GET_CARDS_REQUEST,
+  GET_CARDS_SUCCESS,
 } from "../constants";
 
-export const initialState = {
+const initialState = {
   loading: false,
   cards: [
     {
@@ -26,21 +26,21 @@ export const initialState = {
 };
 const cards = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_CARDS_REQUEST:
+    case GET_CARDS_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case FETCH_CARDS_SUCCESS:
+    case GET_CARDS_SUCCESS:
       return {
         loading: false,
-        users: action.payload,
+        cards: action.payload,
         error: "",
       };
-    case FETCH_CARDS_FAILURE:
+    case GET_CARDS_FAILURE:
       return {
         loading: false,
-        users: [],
+        cards: [],
         error: action.payload,
       };
     default:

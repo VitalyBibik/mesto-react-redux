@@ -12,7 +12,6 @@ const App = () => {
       <Header />
       <Profile />
       <PlacesList />
-      <Popup />
     </div>
   );
 };

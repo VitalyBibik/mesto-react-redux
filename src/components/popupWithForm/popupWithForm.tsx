@@ -2,7 +2,6 @@ import React from "react";
 import close from "../../images/close.svg";
 
 type PopupWithFormProps = {
-  isOpen: boolean;
   name: string;
   onClose: (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => void;
   title: string;
@@ -12,13 +11,7 @@ type PopupWithFormProps = {
 
 function PopupWithForm(props: PopupWithFormProps) {
   return (
-    <div
-      className={
-        props.isOpen
-          ? `popup popup-${props.name} popup_is-opened`
-          : `popup popup-${props.name}`
-      }
-    >
+    <div className={`popup popup_type_${props.name}`}>
       <div className="popup__content">
         <img
           src={close}
