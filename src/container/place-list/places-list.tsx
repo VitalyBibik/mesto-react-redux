@@ -41,8 +41,10 @@ const PlacesList = () => {
   }, []);
   return (
     <div className={cn(styles["places-list"], styles["root__section"])}>
-      <PlaceCard cards={cardsData.cards} />
+      {cardsData.cards.map((item: any) => {
+        return <PlaceCard card={item} />;
+      })}
     </div>
   );
-};
+}; /* <PlaceCard cards={cardsData.cards} /> */
 export default PlacesList;
