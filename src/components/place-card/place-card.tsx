@@ -3,11 +3,10 @@ import styles from "./place-card.module.scss";
 import cn from "classnames";
 
 const PlaceCard = ({ cards }: any) => {
-  console.log(cards, "2");
   const renderCards = () => {
     return cards.map((el: any) => {
       return (
-        <>
+        <div className={cn(styles["place-card"])}>
           <div
             className={cn(styles["place-card__image"])}
             style={{
@@ -25,10 +24,10 @@ const PlaceCard = ({ cards }: any) => {
               </p>
             </div>
           </div>
-        </>
+        </div>
       );
     });
   };
-  return <div className={cn(styles["place-card"])}>{renderCards()}</div>;
+  return renderCards();
 };
 export default PlaceCard;

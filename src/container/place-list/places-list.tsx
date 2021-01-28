@@ -37,7 +37,6 @@ const PlacesList = () => {
   };
 
   useEffect(() => {
-    getUsers();
     getAllCards();
   }, []);
   return (
