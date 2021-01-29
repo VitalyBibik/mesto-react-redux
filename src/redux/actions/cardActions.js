@@ -55,10 +55,10 @@ export const putLikesRequest = (cardId) => {
   };
 };
 
-export const putLikesSuccess = (cards) => {
+export const putLikesSuccess = (card) => {
   return {
     type: PUT_LIKES_SUCCESS,
-    payload: cards,
+    payload: card,
   };
 };
 
@@ -69,11 +69,11 @@ export const putLikesFailure = (error) => {
   };
 };
 
-export const putLikes = (placeLike) => {
+export const putLikes = (cardId) => {
   return (dispatch) => {
     dispatch(putLikesRequest);
     axios
-      .put(`https://nomoreparties.co/cohort9/cards/likes/${placeLike}`, {
+      .put(`https://nomoreparties.co/cohort9/cards/likes/${cardId}`, {
         headerSetting,
       })
       .then((response) => {
@@ -87,11 +87,11 @@ export const putLikes = (placeLike) => {
   };
 };
 /*
-export const removeLikes = (placeLikeRemove) => {
+export const removeLikes = (cardId) => {
   return (dispatch) => {
     dispatch(getCardsRequest);
     axios
-      .delete(`https://nomoreparties.co/cohort9/cards/likes/${placeLikeRemove}`, {
+      .delete(`https://nomoreparties.co/cohort9/cards/likes/${cardId}`, {
        headerSetting,
       })
       .then((response) => {
