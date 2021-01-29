@@ -6,6 +6,8 @@ import {
 
 const initialState = {
   loading: false,
+  loaded: false,
+  error: null,
   cards: [
     {
       createdAt: "2020-03-11T16:21:14.915Z",
@@ -30,16 +32,20 @@ const cards = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        error: null,
       };
     case GET_CARDS_SUCCESS:
       return {
+        ...state,
         loading: false,
+        loaded: true,
         cards: action.payload,
-        error: "",
       };
     case GET_CARDS_FAILURE:
       return {
+        ...state,
         loading: false,
+        loaded: false,
         cards: [],
         error: action.payload,
       };
