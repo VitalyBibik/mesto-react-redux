@@ -2,8 +2,13 @@ import {
   GET_CARDS_FAILURE,
   GET_CARDS_REQUEST,
   GET_CARDS_SUCCESS,
+  PUT_LIKES_FAILURE,
+  PUT_LIKES_REQUEST,
+  PUT_LIKES_SUCCESS,
 } from "../constants";
 import axios from "axios";
+import config from "../config";
+const headerSetting = config.headers;
 
 export const getCardsRequest = () => {
   return {
@@ -30,10 +35,7 @@ export const getCards = () => {
     dispatch(getCardsRequest);
     axios
       .get(`https://nomoreparties.co/cohort9/cards`, {
-        headers: {
-          authorization: "41b0685a-8626-46fa-882b-88da0ea48249",
-          "Content-Type": "application/json",
-        },
+        headerSetting,
       })
       .then((response) => {
         const cards = response.data;
@@ -45,3 +47,61 @@ export const getCards = () => {
       });
   };
 };
+
+export const putLikesRequest = (cardId) => {
+  return {
+    type: PUT_LIKES_REQUEST,
+    payload: cardId,
+  };
+};
+
+export const putLikesSuccess = (cards) => {
+  return {
+    type: PUT_LIKES_SUCCESS,
+    payload: cards,
+  };
+};
+
+export const putLikesFailure = (error) => {
+  return {
+    type: PUT_LIKES_FAILURE,
+    payload: error,
+  };
+};
+
+export const putLikes = (placeLike) => {
+  return (dispatch) => {
+    dispatch(putLikesRequest);
+    axios
+      .put(`https://nomoreparties.co/cohort9/cards/likes/${placeLike}`, {
+        headerSetting,
+      })
+      .then((response) => {
+        const cards = response.data;
+        dispatch(putLikesSuccess(cards));
+      })
+      .catch((error) => {
+        const errorMsg = error.message;
+        dispatch(putLikesFailure(errorMsg));
+      });
+  };
+};
+/*
+export const removeLikes = (placeLikeRemove) => {
+  return (dispatch) => {
+    dispatch(getCardsRequest);
+    axios
+      .delete(`https://nomoreparties.co/cohort9/cards/likes/${placeLikeRemove}`, {
+       headerSetting,
+      })
+      .then((response) => {
+        const cards = response.data;
+        dispatch(getCardsSuccess(cards));
+      })
+      .catch((error) => {
+        const errorMsg = error.message;
+        dispatch(getCardsFailure(errorMsg));
+      });
+  };
+};
+*/

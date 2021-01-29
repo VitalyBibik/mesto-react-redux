@@ -2,6 +2,9 @@ import {
   GET_CARDS_FAILURE,
   GET_CARDS_REQUEST,
   GET_CARDS_SUCCESS,
+  PUT_LIKES_REQUEST,
+  PUT_LIKES_SUCCESS,
+  PUT_LIKES_FAILURE,
 } from "../constants";
 
 const initialState = {
@@ -42,6 +45,27 @@ const cards = (state = initialState, action) => {
         cards: action.payload,
       };
     case GET_CARDS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+        cards: [],
+        error: action.payload,
+      };
+    case PUT_LIKES_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case PUT_LIKES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        cards: action.payload,
+      };
+    case PUT_LIKES_FAILURE:
       return {
         ...state,
         loading: false,
