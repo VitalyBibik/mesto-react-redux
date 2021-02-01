@@ -2,13 +2,13 @@ import React, { useMemo } from "react";
 import styles from "./place-card.module.scss";
 import cn from "classnames";
 
-const PlaceCard = ({ card, handlePutLike, id }: any) => {
-  function handleLikeClick() {
-    handlePutLike(card._id);
-  }
+const PlaceCard = ({ card, handlePutLike }: any) => {
   return useMemo(() => {
+    const handleLikeClick = () => {
+      handlePutLike(card._id);
+    };
     return (
-      <div className={cn(styles["place-card"])} id={id}>
+      <div className={cn(styles["place-card"])}>
         <div
           className={cn(styles["place-card__image"])}
           style={{
@@ -32,6 +32,6 @@ const PlaceCard = ({ card, handlePutLike, id }: any) => {
         </div>
       </div>
     );
-  }, [card.likes]);
+  }, [card, handlePutLike]);
 };
 export default PlaceCard;

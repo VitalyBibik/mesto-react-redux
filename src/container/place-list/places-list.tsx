@@ -16,13 +16,13 @@ const PlacesList = () => {
     dispatch(getCards());
   };
 
-  function handlePutLike(id: any) {
+  const handlePutLike = (id: any) => {
     console.log(id);
-  }
+  };
 
   useEffect(() => {
     getAllCards();
-  }, []);
+  }, [getAllCards]);
   if (!cardsLoaded) return <Loader />;
   return (
     <div className={cn(styles["places-list"], styles["root__section"])}>
