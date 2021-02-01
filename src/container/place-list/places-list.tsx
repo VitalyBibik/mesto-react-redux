@@ -16,6 +16,10 @@ const PlacesList = () => {
     dispatch(getCards());
   };
 
+  function handlePutLike(id: any) {
+    console.log(id);
+  }
+
   useEffect(() => {
     getAllCards();
   }, []);
@@ -23,7 +27,14 @@ const PlacesList = () => {
   return (
     <div className={cn(styles["places-list"], styles["root__section"])}>
       {cardsData.cards.map((item: any) => {
-        return <PlaceCard card={item} key={item._id} />;
+        return (
+          <PlaceCard
+            card={item}
+            key={item._id}
+            id={item._id}
+            handlePutLike={handlePutLike}
+          />
+        );
       })}
     </div>
   );

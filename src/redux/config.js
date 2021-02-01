@@ -6,5 +6,5 @@ const obj = {
   },
 };
 
-const Config = obj;
+const Config = obj.headers;
 export default Config;
