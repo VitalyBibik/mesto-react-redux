@@ -7,7 +7,7 @@ import {
   PUT_LIKES_SUCCESS,
 } from "../constants";
 import axios from "axios";
-import config from "../config";
+import config from "../../config";
 // Разобраться с конфигом
 
 export const getCardsRequest = () => {
@@ -74,9 +74,10 @@ export const putLikesFailure = (error) => {
 
 export const putLikes = (cardId) => {
   return (dispatch) => {
-    dispatch(putLikesRequest);
+    dispatch(putLikesRequest(cardId));
+    console.log(cardId);
     axios
-      .put(`https://nomoreparties.co/cohort9/cards/likes/${cardId}`, {
+      .put(`https://nomoreparties.co/cohort9/cards/like/${cardId}`, null, {
         headers: {
           authorization: "41b0685a-8626-46fa-882b-88da0ea48249",
           "Content-Type": "application/json",

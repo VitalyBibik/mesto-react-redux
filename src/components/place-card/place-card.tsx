@@ -1,8 +1,9 @@
 import React, { useMemo } from "react";
 import styles from "./place-card.module.scss";
 import cn from "classnames";
+import config from "../../config";
 
-const PlaceCard = ({ card, handlePutLike }: any) => {
+const PlaceCard = ({ card, handlePutLike, owner }: any) => {
   return useMemo(() => {
     const handleLikeClick = () => {
       handlePutLike(card._id);
@@ -22,7 +23,9 @@ const PlaceCard = ({ card, handlePutLike }: any) => {
           <h3 className={cn(styles["place-card__name"])}>{card.name}</h3>
           <div className={cn(styles["counter"])}>
             <button
-              className={cn(styles["place-card__like-icon"])}
+              className={cn(styles["place-card__like-icon"], {
+                [styles["place-card__like-icon_liked"]]: owner,
+              })}
               onClick={handleLikeClick}
             />
             <p className={cn(styles["place-card__number-like"])}>
@@ -32,6 +35,6 @@ const PlaceCard = ({ card, handlePutLike }: any) => {
         </div>
       </div>
     );
-  }, [card, handlePutLike]);
+  }, [card, handlePutLike, owner]);
 };
 export default PlaceCard;

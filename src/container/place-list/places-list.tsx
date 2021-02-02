@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 import PlaceCard from "../../components/place-card/place-card";
 import { cardsSelectors, cardsLoadedSelector } from "../../redux/selectors";
-import { getCards } from "../../redux/actions/cardActions";
+import { getCards, putLikes } from "../../redux/actions/cardActions";
 import Loader from "../../components/loader/loader";
+import config from "../../config";
 
 const PlacesList = () => {
   const cardsData = useSelector(cardsSelectors);
@@ -18,21 +19,25 @@ const PlacesList = () => {
 
   const handlePutLike = (id: any) => {
     console.log(id);
+    dispatch(putLikes(id));
   };
 
+  console.log(cardsData);
   useEffect(() => {
     getAllCards();
-  }, [getAllCards]);
+  }, []);
   if (!cardsLoaded) return <Loader />;
   return (
     <div className={cn(styles["places-list"], styles["root__section"])}>
       {cardsData.cards.map((item: any) => {
+        const ownerLike = item.owner._id === config.userId;
         return (
           <PlaceCard
             card={item}
             key={item._id}
             id={item._id}
             handlePutLike={handlePutLike}
+            owner={ownerLike}
           />
         );
       })}

@@ -9,7 +9,7 @@ import {
   GET_AVATAR,
   SET_AVATAR,
 } from "../constants";
-import config from "../config";
+import config from "../../config";
 
 export const getCards = () => ({
   type: GET_CARDS,
