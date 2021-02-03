@@ -18,30 +18,48 @@ const PlacesList = () => {
   };
 
   const handlePutLike = (id: any) => {
-    console.log(id);
     dispatch(putLikes(id));
   };
 
-  console.log(cardsData);
+  const renderCard = () => {
+    if (cardsData.cards.length > 1) {
+      return (
+        <div className={cn(styles["places-list"], styles["root__section"])}>
+          {cardsData.cards.map((item: any) => {
+            const ownerLike = item.owner._id === config.userId;
+            return (
+              <PlaceCard
+                card={item}
+                key={item._id}
+                id={item._id}
+                handlePutLike={handlePutLike}
+                owner={ownerLike}
+              />
+            );
+          })}
+        </div>
+      );
+    } else {
+      return (
+        <div className={cn(styles["places-list"], styles["root__section"])}>
+          (
+          <PlaceCard
+            card={cardsData.cards}
+            key={cardsData.cards._id}
+            id={cardsData.cards._id}
+            handlePutLike={handlePutLike}
+            owner={cardsData.cards.owner._id === config.userId}
+          />
+          );
+        </div>
+      );
+    }
+  };
+
   useEffect(() => {
     getAllCards();
   }, []);
   if (!cardsLoaded) return <Loader />;
-  return (
-    <div className={cn(styles["places-list"], styles["root__section"])}>
-      {cardsData.cards.map((item: any) => {
-        const ownerLike = item.owner._id === config.userId;
-        return (
-          <PlaceCard
-            card={item}
-            key={item._id}
-            id={item._id}
-            handlePutLike={handlePutLike}
-            owner={ownerLike}
-          />
-        );
-      })}
-    </div>
-  );
+  return renderCard();
 };
 export default PlacesList;
