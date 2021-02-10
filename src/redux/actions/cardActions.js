@@ -8,7 +8,7 @@ import {
 } from "../constants";
 import axios from "axios";
 import config from "../../config";
-const headerOptions = config.headers;
+const headerOptions = config.axiosHeaderSetting.headers;
 
 export const getCardsRequest = () => {
   return {
@@ -34,7 +34,7 @@ export const getCards = () => {
   return (dispatch) => {
     dispatch(getCardsRequest);
     axios
-      .get(`https://nomoreparties.co/cohort9/cards`, {
+      .get(`${config.baseUrl}/cards`, {
         headers: headerOptions,
       })
       .then((response) => {
@@ -74,7 +74,7 @@ export const putLikes = (cardId) => {
     dispatch(putLikesRequest(cardId));
     console.log(cardId);
     axios
-      .put(`https://nomoreparties.co/cohort9/cards/like/${cardId}`, null, {
+      .put(`${config.baseUrl}/cards/like/${cardId}`, null, {
         headers: headerOptions,
       })
       .then((response) => {
