@@ -3,9 +3,10 @@ import styles from "./place-card.module.scss";
 import cn from "classnames";
 import config from "../../config";
 
-const PlaceCard = ({ card, handlePutLike, owner }: any) => {
+const PlaceCard = ({ card, handlePutLike, owner, hasLike }: any) => {
   return useMemo(() => {
-    console.log("like", owner);
+    console.log(hasLike, "likeMyUser");
+    console.log(owner, "ownerUser");
     const handleLikeClick = () => {
       handlePutLike(card._id);
     };
@@ -18,14 +19,18 @@ const PlaceCard = ({ card, handlePutLike, owner }: any) => {
           }}
           key={card._id}
         >
-          <button className={cn(styles["place-card__delete-icon"])} />
+          <button
+            className={cn(styles["place-card__delete-icon"], {
+              [styles["place-card__delete-icon_user"]]: owner,
+            })}
+          />
         </div>
         <div className={cn(styles["place-card__description"])}>
           <h3 className={cn(styles["place-card__name"])}>{card.name}</h3>
           <div className={cn(styles["counter"])}>
             <button
               className={cn(styles["place-card__like-icon"], {
-                [styles["place-card__like-icon_liked"]]: owner,
+                [styles["place-card__like-icon_liked"]]: hasLike,
               })}
               onClick={handleLikeClick}
             />
@@ -36,6 +41,6 @@ const PlaceCard = ({ card, handlePutLike, owner }: any) => {
         </div>
       </div>
     );
-  }, [card, handlePutLike, owner]);
+  }, [card, handlePutLike, owner, hasLike]);
 };
 export default PlaceCard;

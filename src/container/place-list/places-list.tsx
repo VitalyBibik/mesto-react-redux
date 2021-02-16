@@ -22,38 +22,27 @@ const PlacesList = () => {
   };
 
   const renderCard = () => {
-    if (cardsData.cards.length > 1) {
-      return (
-        <div className={cn(styles["places-list"], styles["root__section"])}>
-          {cardsData.cards.map((item: any) => {
-            const ownerLike = item.owner._id === config.userId;
-            return (
-              <PlaceCard
-                card={item}
-                key={item._id}
-                id={item._id}
-                handlePutLike={handlePutLike}
-                owner={ownerLike}
-              />
-            );
-          })}
-        </div>
-      );
-    } else {
-      return (
-        <div className={cn(styles["places-list"], styles["root__section"])}>
-          (
-          <PlaceCard
-            card={cardsData.cards}
-            key={cardsData.cards._id}
-            id={cardsData.cards._id}
-            handlePutLike={handlePutLike}
-            owner={cardsData.cards.owner._id === config.userId}
-          />
+    return (
+      <div className={cn(styles["places-list"], styles["root__section"])}>
+        {cardsData.cards.map((item: any) => {
+          const ownerCard = item.owner._id === config.userId;
+          const hasLike = item.likes.map((item: any) => {
+            return item._id === config.userId;
+          });
+          const userHasLike = hasLike.includes(true);
+          return (
+            <PlaceCard
+              card={item}
+              key={item._id}
+              id={item._id}
+              handlePutLike={handlePutLike}
+              owner={ownerCard}
+              hasLike={userHasLike}
+            />
           );
-        </div>
-      );
-    }
+        })}
+      </div>
+    );
   };
 
   useEffect(() => {
