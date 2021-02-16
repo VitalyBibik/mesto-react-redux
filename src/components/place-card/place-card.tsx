@@ -5,6 +5,7 @@ import config from "../../config";
 
 const PlaceCard = ({ card, handlePutLike, owner }: any) => {
   return useMemo(() => {
+    console.log("like", owner);
     const handleLikeClick = () => {
       handlePutLike(card._id);
     };

@@ -58,13 +58,22 @@ const cards = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case PUT_LIKES_SUCCESS:
+    case PUT_LIKES_SUCCESS: {
       return {
         ...state,
         loading: false,
         loaded: true,
-        cards: action.payload,
+        cards: state.cards.map((card) => {
+          if (action.payload._id === card._id) {
+            return {
+              ...card,
+              likes: action.payload.likes,
+            };
+          }
+          return card;
+        }),
       };
+    }
     case PUT_LIKES_FAILURE:
       return {
         ...state,
