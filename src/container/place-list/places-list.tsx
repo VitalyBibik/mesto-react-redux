@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import styles from "./places-list.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
@@ -18,9 +18,9 @@ const PlacesList = () => {
   const cardsLoaded = useSelector(cardsLoadedSelector);
   const dispatch = useDispatch();
 
-  const getAllCards = () => {
+  const getAllCards = useCallback(() => {
     dispatch(getCards());
-  };
+  }, [dispatch]);
 
   const handlePutLike = (id: any) => {
     dispatch(putLikes(id));
@@ -30,6 +30,7 @@ const PlacesList = () => {
   };
   const handleDeleteCard = (id: any) => {
     dispatch(deleteCard(id));
+    console.log("data", cardsData);
   };
 
   const renderCard = () => {
@@ -60,7 +61,7 @@ const PlacesList = () => {
 
   useEffect(() => {
     getAllCards();
-  }, []);
+  }, [getAllCards]);
   if (!cardsLoaded) return <Loader />;
   return renderCard();
 };

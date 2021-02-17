@@ -116,7 +116,7 @@ export const removeLikesFailure = (error) => {
 
 export const removeLikes = (cardId) => {
   return (dispatch) => {
-    dispatch(removeLikesRequest);
+    dispatch(removeLikesRequest(cardId));
     axios
       .delete(`${config.baseUrl}/cards/like/${cardId}`, {
         headers: headerOptions,
@@ -133,16 +133,18 @@ export const removeLikes = (cardId) => {
 };
 
 export const deleteCardRequest = (cardId) => {
+  console.log("request", cardId);
   return {
     type: DELETE_CARD_REQUEST,
     payload: cardId,
   };
 };
 
-export const deleteCardSuccess = (card) => {
+export const deleteCardSuccess = (msg, cardId) => {
   return {
     type: DELETE_CARD_SUCCESS,
-    payload: card,
+    payload: msg,
+    cardId,
   };
 };
 
@@ -154,16 +156,16 @@ export const deleteCardFailure = (error) => {
 };
 
 export const deleteCard = (cardId) => {
-  console.log(cardId);
   return (dispatch) => {
-    dispatch(deleteCardRequest());
+    dispatch(deleteCardRequest(cardId));
     axios
       .delete(`${config.baseUrl}/cards/${cardId}`, {
         headers: headerOptions,
       })
       .then((response) => {
-        const cards = response.data;
-        dispatch(deleteCardSuccess(cards));
+        console.log("otvet", response);
+        const msg = response.data.message;
+        dispatch(deleteCardSuccess(msg, cardId));
       })
       .catch((error) => {
         const errorMsg = error.message;

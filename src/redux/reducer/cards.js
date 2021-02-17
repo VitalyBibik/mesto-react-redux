@@ -132,7 +132,7 @@ const cards = (state = initialState, action) => {
         ...state,
         loading: false,
         loaded: true,
-        cards: state.cards.filter((card) => action.payload._id !== card._id),
+        cards: state.cards.filter((card) => action.cardId !== card._id),
       };
     case DELETE_CARD_FAILURE:
       return {

@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import styles from "./place-card.module.scss";
 import cn from "classnames";
-import config from "../../config";
 
 const PlaceCard = ({
   card,
