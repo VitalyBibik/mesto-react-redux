@@ -3,13 +3,27 @@ import styles from "./place-card.module.scss";
 import cn from "classnames";
 import config from "../../config";
 
-const PlaceCard = ({ card, handlePutLike, owner, hasLike }: any) => {
+const PlaceCard = ({
+  card,
+  handlePutLike,
+  handleRemoveLike,
+  handleDeleteCard,
+  owner,
+  hasLike,
+}: any) => {
   return useMemo(() => {
-    console.log(hasLike, "likeMyUser");
-    console.log(owner, "ownerUser");
     const handleLikeClick = () => {
       handlePutLike(card._id);
     };
+    const handleUnLikeClick = () => {
+      handleRemoveLike(card._id);
+    };
+    const handleDeleteClick = () => {
+      if (window.confirm("Вы уверены, что хотите удалить карточку?")) {
+        handleDeleteCard(card._id);
+      }
+    };
+
     return (
       <div className={cn(styles["place-card"])}>
         <div
@@ -23,6 +37,7 @@ const PlaceCard = ({ card, handlePutLike, owner, hasLike }: any) => {
             className={cn(styles["place-card__delete-icon"], {
               [styles["place-card__delete-icon_user"]]: owner,
             })}
+            onClick={handleDeleteClick}
           />
         </div>
         <div className={cn(styles["place-card__description"])}>
@@ -32,7 +47,7 @@ const PlaceCard = ({ card, handlePutLike, owner, hasLike }: any) => {
               className={cn(styles["place-card__like-icon"], {
                 [styles["place-card__like-icon_liked"]]: hasLike,
               })}
-              onClick={handleLikeClick}
+              onClick={hasLike ? handleUnLikeClick : handleLikeClick}
             />
             <p className={cn(styles["place-card__number-like"])}>
               {card.likes.length}
@@ -41,6 +56,6 @@ const PlaceCard = ({ card, handlePutLike, owner, hasLike }: any) => {
         </div>
       </div>
     );
-  }, [card, handlePutLike, owner, hasLike]);
+  }, [card, handlePutLike, handleRemoveLike, handleDeleteCard, owner, hasLike]);
 };
 export default PlaceCard;

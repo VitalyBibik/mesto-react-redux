@@ -4,7 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 import PlaceCard from "../../components/place-card/place-card";
 import { cardsSelectors, cardsLoadedSelector } from "../../redux/selectors";
-import { getCards, putLikes } from "../../redux/actions/cardActions";
+import {
+  deleteCard,
+  getCards,
+  putLikes,
+  removeLikes,
+} from "../../redux/actions/cardActions";
 import Loader from "../../components/loader/loader";
 import config from "../../config";
 
@@ -19,6 +24,12 @@ const PlacesList = () => {
 
   const handlePutLike = (id: any) => {
     dispatch(putLikes(id));
+  };
+  const handleRemoveLike = (id: any) => {
+    dispatch(removeLikes(id));
+  };
+  const handleDeleteCard = (id: any) => {
+    dispatch(deleteCard(id));
   };
 
   const renderCard = () => {
@@ -36,6 +47,8 @@ const PlacesList = () => {
               key={item._id}
               id={item._id}
               handlePutLike={handlePutLike}
+              handleRemoveLike={handleRemoveLike}
+              handleDeleteCard={handleDeleteCard}
               owner={ownerCard}
               hasLike={userHasLike}
             />

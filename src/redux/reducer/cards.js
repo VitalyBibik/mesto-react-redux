@@ -5,6 +5,12 @@ import {
   PUT_LIKES_REQUEST,
   PUT_LIKES_SUCCESS,
   PUT_LIKES_FAILURE,
+  REMOVE_LIKES_REQUEST,
+  REMOVE_LIKES_SUCCESS,
+  REMOVE_LIKES_FAILURE,
+  DELETE_CARD_SUCCESS,
+  DELETE_CARD_REQUEST,
+  DELETE_CARD_FAILURE,
 } from "../constants";
 
 const initialState = {
@@ -29,6 +35,7 @@ const initialState = {
     },
   ],
 };
+
 const cards = (state = initialState, action) => {
   switch (action.type) {
     case GET_CARDS_REQUEST:
@@ -52,6 +59,7 @@ const cards = (state = initialState, action) => {
         cards: [],
         error: action.payload,
       };
+
     case PUT_LIKES_REQUEST:
       return {
         ...state,
@@ -75,6 +83,58 @@ const cards = (state = initialState, action) => {
       };
     }
     case PUT_LIKES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+        cards: [],
+        error: action.payload,
+      };
+
+    case REMOVE_LIKES_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case REMOVE_LIKES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        cards: state.cards.map((card) => {
+          if (action.payload._id === card._id) {
+            return {
+              ...card,
+              likes: action.payload.likes,
+            };
+          }
+          return card;
+        }),
+      };
+    case REMOVE_LIKES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+        cards: [],
+        error: action.payload,
+      };
+
+    case DELETE_CARD_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case DELETE_CARD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        cards: state.cards.filter((card) => action.payload._id !== card._id),
+      };
+    case DELETE_CARD_FAILURE:
       return {
         ...state,
         loading: false,
