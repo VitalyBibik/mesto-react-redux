@@ -1,0 +1,96 @@
+@import "../../ui/button/button.module";
+
+$maxW: 980px;
+.user-info {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  color: white;
+  width: 100%;
+
+  @media screen and (max-width: $maxW) {
+    & {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &__photo {
+    width: 150px;
+    height: 150px;
+    min-width: 150px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../images/avatar.jpg");
+  }
+
+  &__photo:hover {
+    opacity: 0.5;
+    transition-delay: 0.3ms;
+  }
+
+  @media screen and (max-width: $maxW) {
+    &__photo {
+      margin-top: 40px;
+    }
+  }
+  &__name {
+    margin: 0;
+    font-weight: normal;
+    font-size: 54px;
+    line-height: 56px;
+  }
+  &__job {
+    margin: 20px 0 28px 0;
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  &__button {
+    position: absolute;
+    top: 16px;
+    right: 0;
+  }
+
+  @media screen and (max-width: $maxW) {
+    &__button {
+      position: static;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__edit-btn {
+    font-size: 12px;
+    line-height: 15px;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    width: 38px;
+    height: 18px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:focus {
+      outline-color: greenyellow;
+    }
+    &:hover {
+      background-color: #ffffff;
+      color: #000;
+    }
+    &:active {
+      background-color: #6495ed;
+      color: #000;
+    }
+  }
+  &__data {
+    max-width: 364px;
+    margin-left: 36px;
+  }
+
+  @media screen and (max-width: $maxW) {
+    &__data {
+      margin: 20px 0;
+      text-align: center;
+    }
+  }
+}
